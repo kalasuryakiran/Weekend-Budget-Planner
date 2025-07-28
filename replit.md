@@ -11,8 +11,10 @@ A comprehensive full-stack web application for weekend budget planning built wit
 - **UI Components**: Shadcn/ui with Radix UI primitives
 
 ## Recent Changes
-- 2025-01-28: Migrated from Replit Agent to Replit environment
-- Project successfully running on port 5000 with Express server and Vite frontend
+- 2025-01-28: Successfully migrated from Replit Agent to Replit environment
+- Project running on port 5000 with Express server and Vite frontend
+- Google Gemini API key configured for AI-powered budget planning
+- API tested and working - generates personalized weekend plans
 
 ## User Preferences
 - No specific preferences recorded yet
