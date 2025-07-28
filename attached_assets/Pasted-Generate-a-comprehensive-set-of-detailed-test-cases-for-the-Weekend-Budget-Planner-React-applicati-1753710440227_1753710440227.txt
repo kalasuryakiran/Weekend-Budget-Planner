@@ -1,0 +1,126 @@
+Generate a comprehensive set of detailed test cases for the "Weekend Budget Planner" React application.
+
+The application's core features include:
+
+User inputs for Total Budget (INR) (default 1000) and Number of People (default 1).
+
+A "Generate Plan" button that triggers a Google Gemini API call.
+
+Display of loading, error, and success messages.
+
+Display of the generated plan, including a budget summary (Initial Budget, Total Estimated Cost, Remaining Budget), and sections for Movies, Transport, and Food.
+
+Movie tickets are fixed at 350 INR each.
+
+All calculations are client-side.
+
+No database persistence (no saving/loading/deleting plans).
+
+For each feature, provide test cases covering:
+
+Positive Scenarios: Expected successful behavior.
+
+Negative Scenarios: Invalid inputs, edge cases, error conditions (e.g., API failures).
+
+Boundary Conditions: Minimum/maximum values, zero values where applicable.
+
+UI Interactions: Verify elements are rendered correctly, respond to user input, and display appropriate states (e.g., button disabled, loading spinner visible).
+
+Structure the test cases clearly, indicating the feature being tested, the test case description, steps to reproduce, expected results, and any specific assertions.
+
+Test Case Categories to Cover:
+
+I. Initial Render & Basic UI:
+
+Verify all core UI elements (header, input fields, buttons, budget summary placeholders) are present on initial load.
+
+Verify default values for Total Budget (1000) and Number of People (1).
+
+II. User Input Handling:
+
+Total Budget:
+
+Test valid number inputs (e.g., 500, 1500, 0).
+
+Test non-numeric inputs (should not break, potentially default to 0 or previous valid value).
+
+Test very large numbers.
+
+Number of People:
+
+Test valid number inputs (e.g., 1, 2, 5).
+
+Test zero or negative numbers (should default to 1 or prevent input).
+
+Test non-numeric inputs.
+
+III. "Generate Plan" Button & Loading State:
+
+Verify the button is enabled initially.
+
+Verify the button becomes disabled and displays a loading spinner when clicked.
+
+Verify the button re-enables and the spinner disappears after a successful API call.
+
+Verify the button re-enables and the spinner disappears after a failed API call.
+
+IV. Google Gemini API Integration & LLM Response Processing:
+
+Successful API Call (Valid JSON):
+
+Simulate a successful API response with a valid JSON plan where total cost is within budget.
+
+Verify generatedPlan state is updated correctly.
+
+Verify totalEstimatedCost and remainingBudget are calculated and displayed correctly.
+
+Verify movie price is fixed at 350 INR in the displayed plan, regardless of LLM's suggested price.
+
+Verify success message is displayed.
+
+API Key Missing:
+
+Simulate GEMINI_API_KEY being empty.
+
+Verify an appropriate error message is displayed and API call is not made.
+
+API Call Failure (Network Error/HTTP Error):
+
+Simulate network error during fetch.
+
+Simulate HTTP error response (e.g., 400, 500 status code) from Gemini API.
+
+Verify an appropriate error message is displayed.
+
+Malformed JSON Response:
+
+Simulate Gemini returning non-JSON text or invalid JSON structure.
+
+Verify an appropriate error message is displayed.
+
+Empty/No Candidates in Response:
+
+Simulate Gemini returning an empty candidates array or missing content.parts.
+
+Verify an appropriate error message is displayed.
+
+LLM Plan Exceeds Budget (Conceptual Test):
+
+While the prompt asks Gemini to stay within budget, create a test case that simulates a Gemini response where the total cost does exceed the budget.
+
+Verify the totalEstimatedCost and remainingBudget calculations accurately reflect this, and remainingBudget is displayed in red.
+
+V. Budget Summary & Dynamic Calculations:
+
+Verify Total Estimated Cost and Remaining Budget update instantly as generatedPlan changes.
+
+Test scenarios where Remaining Budget is positive, zero, and negative, ensuring correct color styling (green/red).
+
+VI. Generated Plan Display:
+
+Verify that the Movies, Transport, and Food sections appear only after a plan is generated.
+
+Verify that all details from the generatedPlan (movie title, showtime, transport methods/costs, restaurant type/food cost) are accurately rendered.
+
+Output Format:
+Present the test cases in a clear, readable markdown format, grouped by feature. For each test case, include: Test Case ID, Description, Steps, and Expected Result.
